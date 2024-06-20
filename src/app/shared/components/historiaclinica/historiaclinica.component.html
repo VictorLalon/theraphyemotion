@@ -1,0 +1,106 @@
+<app-header [isModal]="true" [title]="employee ? 'Despacho paciente': 'Despacho Paciente'"></app-header>
+
+<ion-content>
+
+
+  <form [formGroup]="form2" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
+
+<!--     <ion-avatar *ngIf="form.value.img">
+      <img [src]="form.value.img" />
+    </ion-avatar> -->
+
+<!--     <ion-icon class="img-icon" *ngIf="!form.value.img" name="image-outline"></ion-icon> -->
+
+    <br>
+      <ion-grid >
+          <h1>Paciente:</h1>
+          <ion-label><span>{{ form.controls.name.value }} {{ form.controls.apellido.value }}</span></ion-label>
+        <ion-row>
+         
+          <ion-col>  <app-login-input
+             automplete="evaluacion" type="text" label="Evaluacion"
+            [control]="form2.controls.evaluacion">
+          </app-login-input>
+           
+
+            <div class="validators" *ngIf="form2.controls.evaluacion.errors && form2.controls.evaluacion.touched">
+              <div *ngIf="form2.controls.evaluacion.errors?.['required']">El nombre es requerido</div>
+              <!-- <div *ngIf="form.controls.name.errors?.['minLength']">El nombre debe contener 3 caracteres</div> -->
+            </div>
+          </ion-col>
+          <ion-col> <app-login-input automplete="apellido" type="text" label="Terapia"
+              [control]="form2.controls.terapia"></app-login-input>
+            <div class="validators" *ngIf="form2.controls.terapia.errors && form2.controls.terapia.touched">
+              <div *ngIf="form2.controls.terapia.errors?.['required']">El Apellido es requerido</div>
+              <!-- <div *ngIf="form.controls.name.errors?.['minLength']">El nombre debe contener 3 caracteres</div> -->
+            </div>
+          </ion-col>
+<!--           <ion-col>
+            <app-login-input automplete="Cédula" type="number" label="Cédula" [control]="form.controls.cedula"
+            ></app-login-input>
+
+            <div class="validators" *ngIf="form.controls.cedula.errors && form.controls.cedula.touched"> 
+              <div *ngIf="form.controls.cedula.errors?.['required']">La Cédula es Requerida</div>
+            </div>
+
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+
+
+      <!--   <ion-grid>
+        <ion-row>
+          <ion-col>1</ion-col>
+          <ion-col>2</ion-col>
+          <ion-col>3</ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+
+      <ion-grid>
+      <!--   <ion-row>
+          <ion-col> <app-login-input automplete="cargo" type="text" label="Cargo"
+              [control]="form.controls.cargo"></app-login-input>
+
+            <div class="validators" *ngIf="form.controls.cargo.errors && form.controls.cargo.touched">
+              <div *ngIf="form.controls.cargo.errors?.['required']">El cargo es requerido</div>
+            </div>
+          </ion-col>
+          <ion-col><app-login-input automplete="plantel" type="text" label="Plantel"
+            [control]="form.controls.plantel"></app-login-input>
+    
+          <div class="validators" *ngIf="form.controls.plantel.errors && form.controls.plantel.touched">
+            <div *ngIf="form.controls.plantel.errors?.['required']">El plantel es requerido</div>
+          </div>
+        </ion-col>
+          <ion-col>      <app-login-input automplete="fechadenacimiento" type="date" label="Fecha de Nacimiento"
+            [control]="form.controls.fechadenacimiento"></app-login-input>
+    
+          <div class="validators date"
+            *ngIf="form.controls.fechadenacimiento.errors && form.controls.fechadenacimiento.touched">
+            <div *ngIf="form.controls.plantel.errors?.['required']">El plantel es requerido</div>
+          </div>
+    </ion-col>
+        </ion-row> -->
+      </ion-grid>
+<!--       <app-login-input
+      automplete="salario"
+      type="number"
+      label="Salario"      
+      [control]="form.controls.salario"
+      (ionInput) = "setNumberInput()"
+      ></app-login-input> -->
+      
+<!--       <div class="validators" *ngIf="form.controls.salario.errors && form.controls.salario.touched">
+        <div *ngIf="form.controls.salario.errors?.['required']">El salario es requerido</div>
+        <div *ngIf="form.controls.salario.errors?.['min']">El salario minimo es 0 </div>
+      </div> -->
+
+    <ion-button class="submit" type="submit" mode="ios" [disabled]="form.invalid">
+      {{historia ? 'Actualizar empleado': 'Agregar Historia'}}
+      <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+
+  </form>
+
+</ion-content>
